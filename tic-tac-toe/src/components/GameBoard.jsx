@@ -6,20 +6,15 @@ const initialGameBoard = [
     [null, null, null],
   ];
 
-  export default function GameBoard(onSelectSquare, activePlayerSymbol) {
-    const [gameBoard, setGameBoard] = useState(initialGameBoard);
+  export default function GameBoard(onSelectSquare, turns ) {
+    let gameBoard = initialGameBoard;
 
-    function handleSelectSquare(rowIndex, colIndex) {
-        setGameBoard((prevGameBoard) => {
-        // Creating a deep copy of the board array to stop form updating the
-        // values prematurely
-          const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-          updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-          return updatedBoard;
-        });
+    for (const turn of turns) {
+      const { square, player } = turn;
+      const { row, col } = square;
 
-        onSelectSquare();
-      }
+      gameBoard[row][col] = player;
+    }
 
 
 
@@ -40,4 +35,3 @@ const initialGameBoard = [
       </ol>
     );
   }
-
