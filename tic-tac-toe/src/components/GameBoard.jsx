@@ -21,6 +21,8 @@ const initialGameBoard = [
         onSelectSquare();
       }
 
+
+
     return (
       <ol id="game-board">
         {gameBoard.map((row, rowIndex) => (
@@ -38,3 +40,4 @@ const initialGameBoard = [
       </ol>
     );
   }
+
